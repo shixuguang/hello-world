@@ -8,6 +8,7 @@ WORKDIR /app
 COPY app.py .
 COPY cert.pem .
 COPY key.pem .
+RUN chmod 644 cert.pem key.pem
+RUN chmod 666 app.py
 
-EXPOSE 443
 CMD ["python3", "app.py"] 
