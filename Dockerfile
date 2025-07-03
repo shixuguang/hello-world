@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi9/ubi-minimal
-
+USER 0
 RUN microdnf install python3 python3-pip -y \
     && pip3 install flask \
     && microdnf clean all
