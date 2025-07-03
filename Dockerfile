@@ -3,7 +3,7 @@ USER 0
 RUN microdnf install python3 python3-pip -y \
     && pip3 install flask \
     && microdnf clean all
-
+USER 1001
 WORKDIR /app
 COPY app.py .
 COPY cert.pem .
