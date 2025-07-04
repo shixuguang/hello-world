@@ -4,7 +4,6 @@ RUN microdnf install python3 python3-pip -y \
     && pip3 install flask \
     && microdnf clean all
 WORKDIR /app
-COPY kubectl /usr/local/bin
 COPY app.py .
 COPY cert.pem .
 COPY key.pem .
