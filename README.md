@@ -1,21 +1,17 @@
-# Hello World HTTPS Python Endpoint
+# hello-world
 
-## Generate Self-Signed Certificates
-
+#### deploy using cpd-cli
 ```
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj "/CN=localhost"
-```
+    cpd-cli manage create-gitapp-application --cpd_instance_ns=zen 
+          --app_name=hello-world  
+          --app_port=8443
+          --repo_url=https://github.com/shixuguang/hello-world.git
+          --cpu=400m
+          --memory=200Mi
+          --cpu_limit=500m
+          --memory_limit=400Mi
 
-## Build Docker Image
-
-```
-docker build -t hello-world-https .
-```
-
-## Run Docker Container
-
-```
-docker run -p 443:443 --rm hello-world-https
+    command returns application run id
 ```
 
-Visit https://localhost/hello-world in your browser (accept the self-signed certificate warning). 
+* application available at `curl -k https://<zen-route>/physical_location/<default-physical-location-name>/<application-name>-<application-run-id>/hello-world`
